@@ -538,7 +538,6 @@
       "createdAt": "2025-02-10T04:00:00.000Z",
       "firstName": "Королева",
       "lastName": "Соколов",
-
       "email": "королева@example.com",
       "age": 46,
       "position": "Fullstack Developer",
@@ -677,7 +676,6 @@
       "position": "Fullstack Developer",
       "department": "Engineering",
       "hireDate": "2011-04-01",
-
       "salary": 109495,
       "remote": false,
       "city": "Москва",
@@ -781,6 +779,16 @@
       "education": "Среднее",
       "isManager": false,
       "language": "Английский"
+    },
+    {
+      "id": "c71fdb9f-5822-451b-badc-9e6e2bafaffe",
+      "createdAt": "2025-06-01T17:34:37.919Z",
+      "firstName": "Михаил",
+      "lastName": "Зубенко",
+      "email": "mafiozi@228.vor",
+      "salary": "100000",
+      "phone": "+71111111111",
+      "": ""
     }
   ]
 }

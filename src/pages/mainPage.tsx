@@ -1,8 +1,25 @@
 import { observer } from "mobx-react-lite";
-import { Box, useMediaQuery } from "@mui/material";
+import { useState } from "react";
+import { Box, IconButton, useMediaQuery } from "@mui/material";
+import CreateRecordForm from "../components/form/CreateRecordForm";
 import TableComponent from "../components/table/TableComponent";
+import AddIcon from "@mui/icons-material/Add";
+import { rootStore } from "../store/rootStore";
+import { snackbarStore } from "../store/snackbarStore";
 
 const MainPage = observer(() => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleSubmit = async (newRecord: Record<string, any>) => {
+    if (newRecord) {
+      rootStore.tableStore.addNewRecord(newRecord);
+      snackbarStore.show("Запись успешно создана", "success");
+    } else {
+      snackbarStore.show("Ошибка при создании записи", "error");
+    }
+    setIsFormOpen(false);
+  };
+
   const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
@@ -13,6 +30,30 @@ const MainPage = observer(() => {
         height: "100vh",
       }}
     >
+      <Box
+        sx={{
+          height: "100px",
+          borderBottom: "1px solid #ccc",
+          bgcolor: "background.default",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          px: 2,
+        }}
+      >
+        <span>Header</span>
+        <IconButton color="primary" onClick={() => setIsFormOpen(true)}>
+          <AddIcon />
+        </IconButton>
+      </Box>
+
+      {isFormOpen && (
+        <CreateRecordForm
+          onClose={() => setIsFormOpen(false)}
+          onSubmit={handleSubmit}
+        />
+      )}
+
       <Box
         sx={{
           flexGrow: 1,
