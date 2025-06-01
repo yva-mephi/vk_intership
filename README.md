@@ -71,7 +71,7 @@ bun start
 bun run test
 ```
 
-||тут важно именно через run (т.к. bun еще сыроват в его работе возникают ошибки и при использовании его в тестах может появиться как раз такая, см. https://github.com/oven-sh/bun/issues/20103)||
+- Тут важно именно через run (т.к. bun еще сыроват в его работе возникают ошибки и при использовании его в тестах может появиться как раз такая, см. https://github.com/oven-sh/bun/issues/20103)
 
 Тесты находятся в папке `tests`. Присутствуют проверки сетевых запросов и асинхронного поведения.
 
@@ -105,3 +105,7 @@ bun run test
 - Стилизация реализована через Material UI.
 - Возможность динамически добавлять поля и валидации по типу.
 - Все поля и правила заданы в `src/types/tableTypes/fieldDefinitions`.
+![image](https://github.com/user-attachments/assets/d803213d-c354-4808-b36f-687aa3ebfd9c)
+
+![image](https://github.com/user-attachments/assets/b469c5f0-8e1d-4da0-9762-3b8bbc7c27c0)
+
