@@ -11,7 +11,7 @@ export const loadNextPage = async (
   setHasMoreData: (hasMoreData: boolean) => void
 ) => {
   const start = records.length;
-  const limit = 10;
+  const limit = 20;
 
   runInAction(() => setIsLoading(true));
 
