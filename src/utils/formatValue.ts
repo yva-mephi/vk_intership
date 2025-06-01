@@ -1,4 +1,4 @@
-export const formatValue = (key: string, value: unknown): string => {
+export const formatValue = (_key: string, value: unknown): string => {
   if (typeof value === "string") {
     const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/;
     const shortDateRegex = /^\d{4}-\d{2}-\d{2}$/;

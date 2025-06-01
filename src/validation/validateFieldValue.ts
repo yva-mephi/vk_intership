@@ -5,13 +5,13 @@ export function validateValue(
   fieldDef: (typeof fieldDefinitions)[number]
 ): boolean {
   switch (fieldDef.type) {
-    case "string":
+    case "string": {
       const trimmed = value.trim();
       if (trimmed.length < 1 || trimmed.length > 100) return false;
 
       // Специальная проверка для имени и фамилии
       if (["firstName", "lastName"].includes(fieldDef.key)) {
-        const nameRegex = /^[A-Za-zА-Яа-яЁё\-]+$/;
+        const nameRegex = /^[A-Za-zА-Яа-яЁё-]+$/;
         return nameRegex.test(trimmed);
       }
 
@@ -22,8 +22,8 @@ export function validateValue(
       }
 
       return true;
-
-    case "number":
+    }
+    case "number": {
       const numValue = Number(value);
       if (isNaN(numValue)) return false;
 
@@ -33,17 +33,17 @@ export function validateValue(
       if (fieldDef.key === "experience") return numValue >= 0 && numValue <= 50;
 
       return true;
-
-    case "boolean":
+    }
+    case "boolean": {
       return ["true", "false"].includes(value.toLowerCase());
-
-    case "email":
+    }
+    case "email": {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(value);
-
-    case "date":
+    }
+    case "date": {
       return isValidDate(value);
-
+    }
     default:
       return true;
   }

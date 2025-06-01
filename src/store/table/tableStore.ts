@@ -1,11 +1,11 @@
-import { makeAutoObservable, action } from "mobx";
+import { makeAutoObservable, action, runInAction } from "mobx";
 import { recordsApi } from "../../api/api";
 import { loadNextPage } from "./dataLoader";
 import { sortRecords } from "./sorter";
 import type { RecordType } from "../../types/recordType";
 
 export class TableStore {
-  rootStore: any;
+  rootStore: unknown;
   records: RecordType[] = [];
   isLoading = false;
   hasMoreData = true;
@@ -13,13 +13,13 @@ export class TableStore {
   sortBy: string | null = null;
   sortOrder: "asc" | "desc" = "asc";
 
-  constructor(rootStore: any) {
+  constructor(rootStore: unknown) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
   }
 
-  fetchNextPage = action(() => {
-    loadNextPage(
+  fetchNextPage = action(async () => {
+    await loadNextPage(
       this.records,
       this.fieldNames,
       (newRecords) => {
@@ -70,12 +70,14 @@ export class TableStore {
     );
   });
 
-  deleteRecord = action(async (id: string | number) => {
+  deleteRecord = async (id: string | number) => {
     try {
       await recordsApi.delete(id);
-      this.records = this.records.filter((r) => r.id !== id);
+      runInAction(() => {
+        this.records = this.records.filter((r) => r.id !== id);
+      });
     } catch (e) {
       console.error("Ошибка удаления", e);
     }
-  });
+  };
 }

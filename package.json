@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "test": "sh -c 'vitest run'",
     "api": "json-server --watch db.json --port 3001",
     "start": "vite",
     "build": "tsc -b && vite build",
@@ -23,7 +24,8 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",
     "ts-node": "^10.9.2",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "vitest": "^3.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

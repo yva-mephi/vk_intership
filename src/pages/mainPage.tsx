@@ -6,13 +6,14 @@ import TableComponent from "../components/table/TableComponent";
 import AddIcon from "@mui/icons-material/Add";
 import { rootStore } from "../store/rootStore";
 import { snackbarStore } from "../store/snackbarStore";
+import type { RecordType } from "../types/recordType";
 
 const MainPage = observer(() => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const handleSubmit = async (newRecord: Record<string, any>) => {
+  const handleSubmit = async (newRecord: Record<string, unknown>) => {
     if (newRecord) {
-      rootStore.tableStore.addNewRecord(newRecord);
+      rootStore.tableStore.addNewRecord(newRecord as RecordType);
       snackbarStore.show("Запись успешно создана", "success");
     } else {
       snackbarStore.show("Ошибка при создании записи", "error");

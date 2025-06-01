@@ -16,7 +16,7 @@ import Counter from "./Counter";
 
 interface CreateRecordFormProps {
   onClose: () => void;
-  onSubmit: (newRecord: Record<string, any>) => void;
+  onSubmit: (newRecord: Record<string, unknown>) => void;
 }
 
 const CreateRecordForm = observer(

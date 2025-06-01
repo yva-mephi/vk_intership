@@ -1,11 +1,11 @@
 import { parseValue } from "../../utils/parseValue";
 
-export const sortRecords = <T extends Record<string, any>>(
+export const sortRecords = <T extends Record<string, unknown>>(
   records: T[],
   sortBy: string | null,
   sortOrder: "asc" | "desc",
-  setSortBy: (sortBy: string | null) => void,
-  setSortOrder: (sortOrder: "asc" | "desc") => void,
+  _setSortBy: (sortBy: string | null) => void,
+  _setSortOrder: (sortOrder: "asc" | "desc") => void,
   setRecords: (records: T[]) => void
 ) => {
   if (!sortBy) return;

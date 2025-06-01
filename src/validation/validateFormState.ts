@@ -1,4 +1,4 @@
-import type { FieldValue } from "../stores/formStore";
+import type { FieldValue } from "../store/formStore";
 
 export function validateForm(
   fields: FieldValue[],

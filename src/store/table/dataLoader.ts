@@ -1,5 +1,6 @@
 import { recordsApi } from "../../api/api";
 import type { RecordType } from "../../types/recordType";
+import { runInAction } from "mobx";
 
 export const loadNextPage = async (
   records: RecordType[],
@@ -12,25 +13,26 @@ export const loadNextPage = async (
   const start = records.length;
   const limit = 10;
 
-  setIsLoading(true);
+  runInAction(() => setIsLoading(true));
 
   try {
     const data = await recordsApi.get(start, limit);
+    runInAction(() => {
+      if (data.length === 0) {
+        setHasMoreData(false);
+      }
 
-    if (data.length === 0) {
-      setHasMoreData(false);
-    }
+      const newFieldNamesSet = new Set(fieldNames);
+      data.forEach((record) => {
+        Object.keys(record).forEach((key) => newFieldNamesSet.add(key));
+      });
 
-    const newFieldNamesSet = new Set(fieldNames);
-    data.forEach((record) => {
-      Object.keys(record).forEach((key) => newFieldNamesSet.add(key));
+      setFieldNames(Array.from(newFieldNamesSet));
+      setRecords([...records, ...data]);
     });
-
-    setFieldNames(Array.from(newFieldNamesSet));
-    setRecords([...records, ...data]);
   } catch (error) {
     console.error("Ошибка загрузки данных:", error);
   } finally {
-    setIsLoading(false);
+    runInAction(() => setIsLoading(false));
   }
 };

@@ -17,12 +17,12 @@ export interface FieldValue {
 }
 
 export class FormStore {
-  rootStore: any;
+  rootStore: unknown;
   fields: FieldValue[] = [];
   errors: Record<string, string> = {};
   isSubmitting = false;
 
-  constructor(rootStore: any) {
+  constructor(rootStore: unknown) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
     this.setFieldCount(5);

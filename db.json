@@ -789,6 +789,26 @@
       "salary": "100000",
       "phone": "+71111111111",
       "": ""
+    },
+    {
+      "id": "458ad760-3974-4a92-b9af-d055699c7812",
+      "createdAt": "2025-06-01T17:51:34.628Z",
+      "firstName": "Наталья",
+      "lastName": "Морская",
+      "position": "пехота",
+      "salary": "100000",
+      "hireDate": "2000-02-12",
+      "": ""
+    },
+    {
+      "id": "471a1ae4-2770-4a54-ba38-57dc26bd7ef4",
+      "createdAt": "2025-06-01T18:53:43.452Z",
+      "firstName": "Вова",
+      "lastName": "Адидас",
+      "email": "adidas@vova.street",
+      "age": "22",
+      "position": "Старший",
+      "": ""
     }
   ]
 }
