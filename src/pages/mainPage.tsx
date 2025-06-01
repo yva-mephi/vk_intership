@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { rootStore } from "../store/rootStore";
 import { snackbarStore } from "../store/snackbarStore";
 import type { RecordType } from "../types/recordType";
+import Logo from "../assets/logo.svg";
 
 const MainPage = observer(() => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -42,7 +43,7 @@ const MainPage = observer(() => {
           px: 2,
         }}
       >
-        <span>Header</span>
+        <img src={Logo} alt="Logo" style={{ height: "40px" }} />
         <IconButton color="primary" onClick={() => setIsFormOpen(true)}>
           <AddIcon />
         </IconButton>
